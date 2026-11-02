@@ -105,6 +105,37 @@ sudo firewall-cmd --reload
 
 Each command returned `success`.
 
+### Challenge 6: dashboard installation failed during the installer run
+
+The installer completed the indexer and manager, then failed on the last component:
+
+```
+ERROR: Wazuh dashboard installation failed.
+```
+
+The installer then rolled everything back automatically (`Installation cleaned`), so no half-installed state was left on the VM.
+
+**Investigation**
+
+The installer log only showed the rollback, so I looked for the real cause step by step:
+
+| Check | Result |
+|---|---|
+| `df -h` | `/` had 19 GB free (31% used), `/boot` 415 MB free |
+| `df -i /` | Inodes 2% used, so no inode exhaustion |
+| `sudo dmesg \| tail -30` | No disk I/O, XFS or out-of-memory errors |
+| `/var/log/dnf.log` | The visible network errors were from August (an old DNS problem), not from this install |
+
+The log before the failure showed the 286 MB package downloaded and the transaction check passed. It failed at `Error unpacking rpm package wazuh-dashboard-4.14.9-1`, which took about 4.5 minutes. Disk space, inodes, RAM and network were all fine, so the failure was most likely transient.
+
+**Test: install only the dashboard package**
+
+To get a clear error message instead of an installer rollback, I installed the dashboard package on its own, pinned to the same version as the installer:
+
+```bas
+
+
+
 ### Harmless warning
 
 ```
