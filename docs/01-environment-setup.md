@@ -71,7 +71,7 @@ sudo pvresize /dev/sda2
 >
 > Fix: add the device back to the devices file.
 > ```bash
-> <PASTE THE EXACT COMMAND YOU USED HERE, e.g. sudo vgimportdevices --all>
+> < sudo vgimportdevices --all>
 > ```
 > Then `pvresize` worked: `Physical volume "/dev/sda2" changed`.
 
