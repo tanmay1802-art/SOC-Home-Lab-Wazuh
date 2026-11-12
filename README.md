@@ -1,36 +1,36 @@
-# SOC Home Lab: Wazuh SIEM & Sysmon Integration
+# AI-Assisted SOC Pipeline on Rocky Linux
 
 ## 📌 Overview
-This project documents the deployment of a Security Information and Event Management (SIEM) home lab using **Wazuh** on **Rocky Linux 9**. The goal is to simulate a real-world Security Operations Center (SOC) environment by ingesting logs from both Linux and Windows endpoints, detecting suspicious activity, and visualizing alerts on a centralized dashboard.
+A custom, lightweight SOC pipeline on my Rocky Linux lab. It parses Cowrie honeypot and Fail2ban logs, detects brute-force and post-compromise activity, and will use a local LLM (Ollama + RAG playbook) to produce analyst-style incident reports.
+
+All attack traffic is simulated from my own Kali VM against my own lab.
+
+**Why custom instead of Wazuh?** I started a Wazuh SIEM deployment but could not complete it on my 6.6 GB VM (notes in `docs/`). I replaced it with a lightweight pipeline that fits the resources and lets me understand every detection step.
+
+## 📊 Project Status
+| Component | Status |
+|---|---|
+| Rocky Linux lab: BIND9, Apache, Postfix, Fail2ban, WireGuard, Cowrie | ✅ Done |
+| Kali attack simulator + Cowrie/Fail2ban log parser | ✅ Done |
+| Rule-based detection | ⏳ Planned |
+| Local LLM (Ollama) triage + RAG playbook | ⏳ Planned |
+| Streamlit dashboard | ⏳ Planned |
+| Wazuh SIEM attempt | ❌ Not completed (notes in `docs/`) |
 
 ## 🏗️ Architecture
-- **SIEM Server:** Rocky Linux 9 (Wazuh Manager, Indexer, Dashboard)
-- **Endpoint 1:** Linux (Ubuntu Client) - Forwarding `auth.log` and Cowrie Honeypot logs.
-- **Endpoint 2:** Windows 10/11 - Forwarding Windows Event Logs and Sysmon data.
-- **AI Integration:** Local Ollama LLM (planned) for alert summarization and triage.
+- **Server:** Rocky Linux 9 (192.168.200.4): Cowrie (22 -> 2222), Fail2ban, real SSH on 2200
+- **Attacker:** Kali Linux (192.168.200.40), `attack_sim.sh`
+- **Pipeline:** logs -> `parser.py` -> detection -> LLM triage -> dashboard
 
-## 🛠️ Tech Stack
-- Wazuh (SIEM/XDR)
-- Sysmon (Windows event monitoring)
-- Rocky Linux (Server OS)
-- Windows (Endpoint)
-- Ollama (AI integration - planned)
-
-## 🚀 Installation Steps
-1. **Environment Setup:** Increased VirtualBox disk space and resolved LVM device issues (`vgimportdevices`).
-2. **Wazuh Installation:** Installed Wazuh Indexer, Manager, and Dashboard on Rocky Linux.
-3. **Agent Configuration:** Installed Wazuh Agent on Windows and configured Sysmon.
-4. **Log Ingestion:** Forwarded `auth.log`, Cowrie logs, and Windows Event IDs (4624, 4625).
-
-*(Detailed steps are available in the `docs/` folder.)*
-
-## 📸 Screenshots
-*(Check the `screenshots/` folder for visual proof of the lab setup and alerts.)*
+## 📂 Repository
+- `ai-soc-pipeline/`: parser, attack simulator, sample logs
+- `docs/`: Wazuh attempt and troubleshooting notes
+- `screenshots/`: lab screenshots
 
 ## 🧠 Challenges & Learnings
-- **LVM Disk Resize:** Faced an issue where `pvresize` could not find the device. Fixed by running `vgimportdevices --all` and then resizing the logical volume.
-- **Log Parsing:** Configuring Cowrie JSON logs in Wazuh required custom decoders.
-- **AI Integration:** Successfully integrated a local LLM to summarize alerts. 
+- **SELinux and systemd:** Cowrie failed under systemd (`203/EXEC`) because binaries in `/home` carry `user_home_t`. Fixed by moving the install to `/opt/cowrie`.
+- **LVM disk resize:** `pvresize` could not find the device. Fixed with `vgimportdevices --all`.
+- **Resource limits:** Wazuh's full stack was too heavy for the VM, so I designed a lighter pipeline.
 
 ## 🔗 Connect with Me
 - [LinkedIn](https://www.linkedin.com/in/tanmay-sarkar-emon-64b46334b)
