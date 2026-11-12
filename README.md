@@ -19,7 +19,7 @@ All attack traffic is simulated from my own Kali VM against my own lab.
 
 ## 🏗️ Architecture
 - **Server:** Rocky Linux 9 (192.168.200.4): Cowrie (22 -> 2222), Fail2ban, real SSH on 2200
-- **Attacker:** Kali Linux (192.168.200.40), `attack_sim.sh`
+- **Attacker:** Kali Linux (192.168.200.41), `attack_sim.sh`
 - **Pipeline:** logs -> `parser.py` -> detection -> LLM triage -> dashboard
 
 ## 📂 Repository
