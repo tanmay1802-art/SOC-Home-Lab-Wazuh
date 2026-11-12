@@ -1,0 +1,4 @@
+2026-11-12 01:11:00,123 fail2ban.filter         [999]: INFO    [sshd] Found 192.168.200.40 - 2026-11-12 01:11:00
+2026-11-12 01:11:30,456 fail2ban.actions        [999]: NOTICE  [sshd] Ban 192.168.200.40
+2026-11-12 01:21:30,789 fail2ban.actions        [999]: NOTICE  [sshd] Unban 192.168.200.40
+2026-11-12 01:22:00,000 fail2ban.server         [999]: INFO    Jail 'sshd' started

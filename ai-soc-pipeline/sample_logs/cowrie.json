@@ -1,0 +1,13 @@
+{"eventid":"cowrie.session.connect","src_ip":"192.168.200.40","src_port":51234,"dst_port":2222,"session":"a1b2c3d4","timestamp":"2026-11-12T01:10:00.100000Z"}
+{"eventid":"cowrie.login.failed","username":"root","password":"root","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:01.000000Z"}
+{"eventid":"cowrie.login.failed","username":"root","password":"123456","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:02.000000Z"}
+{"eventid":"cowrie.login.failed","username":"admin","password":"admin","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:03.000000Z"}
+{"eventid":"cowrie.login.failed","username":"ubuntu","password":"ubuntu","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:04.000000Z"}
+{"eventid":"cowrie.login.failed","username":"pi","password":"raspberry","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:05.000000Z"}
+{"eventid":"cowrie.login.failed","username":"test","password":"test","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:06.000000Z"}
+{"eventid":"cowrie.login.success","username":"root","password":"kali","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:08.000000Z"}
+{"eventid":"cowrie.command.input","input":"uname -a","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:10.000000Z"}
+{"eventid":"cowrie.command.input","input":"cat /etc/passwd","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:11.000000Z"}
+{"eventid":"cowrie.session.file_download","url":"http://example.com/bot.sh","outfile":"var/lib/cowrie/downloads/abc","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:14.000000Z"}
+{"eventid":"cowrie.session.closed","duration":"20.1","src_ip":"192.168.200.40","session":"a1b2c3d4","timestamp":"2026-11-12T01:10:20.000000Z"}
+not valid json line
