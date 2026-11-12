@@ -18,4 +18,4 @@ Rocky:  `python3 parser.py --cowrie /opt/cowrie/var/log/cowrie/cowrie.json --fai
 Test without a lab: `python3 parser.py --cowrie sample_logs/cowrie.json --fail2ban sample_logs/fail2ban.log`
 
 
-![Uploading image.png…]()
+
