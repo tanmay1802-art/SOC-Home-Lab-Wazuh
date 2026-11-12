@@ -16,3 +16,6 @@ Note: all traffic is simulated from my own Kali VM against my own lab.
 Kali:   `./attack_sim.sh <rocky_ip> all`
 Rocky:  `python3 parser.py --cowrie /opt/cowrie/var/log/cowrie/cowrie.json --fail2ban /var/log/fail2ban.log`
 Test without a lab: `python3 parser.py --cowrie sample_logs/cowrie.json --fail2ban sample_logs/fail2ban.log`
+
+
+![Uploading image.png…]()
