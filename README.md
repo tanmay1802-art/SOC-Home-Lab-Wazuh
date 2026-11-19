@@ -12,7 +12,7 @@ All attack traffic is simulated from my own Kali VM against my own lab.
 |---|---|
 | Rocky Linux lab: BIND9, Apache, Postfix, Fail2ban, WireGuard, Cowrie | ✅ Done |
 | Kali attack simulator + Cowrie/Fail2ban log parser | ✅ Done |
-| Rule-based detection | ⏳ Planned |
+| Rule-based detection | ✅ Done |
 | Local LLM (Ollama) triage + RAG playbook | ⏳ Planned |
 | Streamlit dashboard | ⏳ Planned |
 | Wazuh SIEM attempt | ❌ Not completed (notes in `docs/`) |
